@@ -5,20 +5,23 @@
 # Mainly inspired by https://github.com/openstack/keystone/blob/master/tools/sample_data.sh
 
 # Modified by Bilel Msekni / Institut Telecom
+
+# Modified by Marco Fornaro / Huawei - ERC Munich
+
 #
 # Support: openstack@lists.launchpad.net
 # License: Apache Software License (ASL) 2.0
 #
 
 # Host address
-HOST_IP=10.10.100.51
-EXT_HOST_IP=192.168.100.51
+HOST_IP=10.10.10.51
+EXT_HOST_IP=192.168.1.251
 
 # MySQL definitions
-MYSQL_USER=keystoneUser
+MYSQL_USER=keystone
 MYSQL_DATABASE=keystone
 MYSQL_HOST=$HOST_IP
-MYSQL_PASSWORD=keystonePass
+MYSQL_PASSWORD=openstacktest
 
 # Keystone definitions
 KEYSTONE_REGION=RegionOne
@@ -104,7 +107,7 @@ keystone service-create --name cinder --type volume --description 'OpenStack Vol
 keystone service-create --name glance --type image --description 'OpenStack Image Service'
 keystone service-create --name keystone --type identity --description 'OpenStack Identity'
 keystone service-create --name ec2 --type ec2 --description 'OpenStack EC2 service'
-keystone service-create --name quantum --type network --description 'OpenStack Networking service'
+keystone service-create --name neutron --type network --description 'OpenStack Networking service'
 
 create_endpoint () {
   case $1 in
